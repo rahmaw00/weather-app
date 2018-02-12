@@ -4,6 +4,8 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import WeekPage from './weekpage';
+import DayPage from './daypage';
 
 const ReactRouter = () => (
   <Router>
@@ -17,8 +19,8 @@ const ReactRouter = () => (
       <hr/>
 
       <Route exact path="/" component={Home}/>
-      <Route path="/Day" component={Week}/>
-      <Route path="/day" component={Day}/>
+      <Route path="/week" component={WeekPage}/>
+      <Route path="/day" component={DayPage}/>
     </div>
   </Router>
 )
@@ -38,28 +40,6 @@ const Week = () => (
 const Day = ({ match }) => (
   <div>
     <h2>Day</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
-      </li>
-    </ul>
-
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
   </div>
 )
 
